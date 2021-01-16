@@ -7,6 +7,7 @@
 /* Define layer names */
 enum userspace_layers {
     CMT = 0,
+    CMK,
     NAVMT,
     FUNMT,
     NUMMT,
@@ -39,6 +40,10 @@ enum custom_keycodes {
 #define KC_EUR ALGR(KC_5)
 #define ST_ENT SFT_T(KC_ENT)
 
+#define RSE_DEL LT(NAVMT, KC_DEL)
+#define LWR_BSP LT(SYMMT, KC_BSPC)
+
+
 // mod tap
 #define CTRL_MN CTL_T(KC_MINS)
 #define ALT_BO ALT_T(KC_LBRC)
@@ -49,12 +54,13 @@ enum custom_keycodes {
 #define GO_SC2 DF(SC2_B)
 #define GO_GAME DF(GAME_B)
 #define GO_BASE DF(CMT)
+#define GO_CMK DF(CMK)
 
 // Homerow mod specific keycodes
 #define NAV_DEL LT(NAVMT, KC_DEL)
-#define FUN_ENT LT(FUNMT,KC_ENT)
-#define NUM_SPC LT(NUMMT,KC_SPC)
-#define SYM_BSP LT(SYMMT,KC_BSPC)
+#define FUN_ENT LT(FUNMT, KC_ENT)
+#define NUM_SPC LT(NUMMT, KC_SPC)
+#define SYM_BSP LT(SYMMT, KC_BSPC)
 #define MK_A LGUI_T(KC_A)
 #define MK_R LALT_T(KC_R)
 #define MK_S LCTL_T(KC_S)
