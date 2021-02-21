@@ -12,14 +12,9 @@ enum userspace_layers {
     FUNMT,
     NUMMT,
     SYMMT,
-    SC2_B,
-    SC2_L,
-    GAME_B,
-    GAME_L
 };
 
 typedef union {
-    uint32_t raw;
     struct {
         bool osIsLinux;
     };
@@ -42,6 +37,9 @@ enum custom_keycodes {
 
 #define RSE_DEL LT(NAVMT, KC_DEL)
 #define LWR_BSP LT(SYMMT, KC_BSPC)
+
+#define B_PREV A(KC_LEFT)
+#define B_NEXT A(KC_RIGHT)
 
 
 // mod tap

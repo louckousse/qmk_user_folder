@@ -32,13 +32,13 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define __________________SYM_L2___________________       KC_HASH, KC_EXLM, KC_LPRN, KC_RPRN, KC_PIPE
 #define __________________SYM_L3___________________       KC_PERC, KC_EUR,  KC_LCBR, KC_RCBR, KC_AMPR
 
-#define ________________NUMBER_L1__________________       KC_SLSH, KC_7,    KC_8,    KC_9,    KC_MINS
+#define ________________NUMBER_L1__________________       KC_PAUS, KC_7,    KC_8,    KC_9,    KC_MINS
 #define ________________NUMBER_L2__________________       KC_ASTR, KC_4,    KC_5,    KC_6,    KC_PLUS
 #define ________________NUMBER_L3__________________       KC_0,    KC_1,    KC_2,    KC_3,    KC_EQL
 
-#define __________________NAV_L1___________________       _______, KC_HOME, KC_UP,   KC_END,  KC_PGUP
-#define __________________NAV_L2___________________       _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN
-#define __________________NAV_L3___________________       KC_MPRV, KC_MPLY, KC_MNXT, DSK_PRV, DSK_NXT
+#define __________________NAV_L1___________________       KC_F5,   KC_HOME, KC_UP,   KC_END,  KC_PGUP
+#define __________________NAV_L2___________________       KC_F6,   KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN
+#define __________________NAV_L3___________________       KC_F8,   B_PREV,  B_NEXT,  DSK_PRV, DSK_NXT
 
 #define __________________FUN_L1___________________       KC_F9,   KC_F10,  KC_F11,  KC_F12,  PRINT
 #define __________________FUN_L2___________________       KC_F5,   KC_F6,   KC_F7,   KC_F8,   LOCK

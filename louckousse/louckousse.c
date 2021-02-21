@@ -54,7 +54,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_OS:
             if(record->event.pressed) {
                 user_config.osIsLinux = !user_config.osIsLinux;
-                eeconfig_update_user(user_config.raw);
             }
             break;
     }
@@ -79,3 +78,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [GV_CIRC] = COMBO(gv_combo, KC_CIRC),
   [JL_MINS] = COMBO(jl_combo, KC_MINS)
 };
+
+void keyboard_post_init_user(void) {
+
+    user_config.osIsLinux = true;
+}
