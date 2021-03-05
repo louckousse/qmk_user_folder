@@ -11,7 +11,7 @@ enum userspace_layers {
     NAVMT,
     FUNMT,
     NUMMT,
-    SYMMT,
+    SYMMT
 };
 
 typedef union {
@@ -75,5 +75,6 @@ enum custom_keycodes {
 #define LAYOUT_bastyl_pretty_wrapper(...) LAYOUT_5x6(__VA_ARGS__)
 #define LAYOUT_crbn_pretty_wrapper(...) LAYOUT(__VA_ARGS__)
 #define LAYOUT_lily58_pretty_wrapper(...) LAYOUT(__VA_ARGS__)
+#define LAYOUT_tbk_wrapper(...) LAYOUT_split_3x6_3(__VA_ARGS__)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record);
