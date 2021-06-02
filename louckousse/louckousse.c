@@ -80,10 +80,10 @@ const uint16_t PROGMEM gv_combo[] = {KC_G, KC_V, COMBO_END};
 const uint16_t PROGMEM jl_combo[] = {KC_J, KC_L, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [JM_QUOT] = COMBO(jm_combo, KC_QUOT),
-  [BG_GRV] = COMBO(bg_combo, KC_GRV),
+  [JM_QUOT] = COMBO(jm_combo, KC_SCLN),
+  [BG_GRV] = COMBO(bg_combo, KC_SLASH),
   [GV_CIRC] = COMBO(gv_combo, KC_CIRC),
-  [JL_MINS] = COMBO(jl_combo, KC_MINS)
+  [JL_MINS] = COMBO(jl_combo, KC_TAB)
 };
 
 #ifdef PKRGB

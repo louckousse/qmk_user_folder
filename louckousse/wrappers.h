@@ -20,9 +20,9 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define ______________COLEMAK_DH_MT_L2_____________       MK_A,    MK_R,    MK_S,    MK_T,    KC_G
 #define ______________COLEMAK_DH_MT_L3_____________       KC_Z,    MK_X,    KC_C,    KC_D,    KC_V
 
-#define ______________COLEMAK_DH_MT_R1_____________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
+#define ______________COLEMAK_DH_MT_R1_____________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_GRV
 #define ______________COLEMAK_DH_MT_R2_____________       KC_M,    MK_N,    MK_E,    MK_I,    MK_O
-#define ______________COLEMAK_DH_MT_R3_____________       KC_K,    KC_H,    KC_COMM, MK_DOT,  KC_SLASH
+#define ______________COLEMAK_DH_MT_R3_____________       KC_K,    KC_H,    KC_COMM, MK_DOT,  KC_QUOT
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 #define ___________________MOD_L___________________       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______
