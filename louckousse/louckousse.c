@@ -51,6 +51,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
+        case M_SCRL:
+            user_config.tb_scroll = record->event.pressed;
+            return false;
+        case M_FAST:
+            user_config.tb_fast = record->event.pressed;
+            return false;
+        case M_SLOW:
+            user_config.tb_slow = record->event.pressed;
+            return false;
         case KC_OS:
             if(record->event.pressed) {
                 user_config.osIsLinux = !user_config.osIsLinux;
@@ -120,6 +129,9 @@ void keyboard_post_init_user(void) {
     rgblight_layers = my_rgb_layers;
     #endif
     #endif
+    #ifdef TRACKBALL_MATRIX_ROW
+    trackball_sethsv(235, 200, 100);
+    #endif
 }
 
 #ifdef PKRGB
@@ -142,4 +154,29 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 #endif
+#endif
+
+#ifdef TRACKBALL_MATRIX_COL
+void process_trackball_user(trackball_record_t *record) {
+    uint8_t multiplier;
+    if (user_config.tb_slow) {
+        multiplier = 1;
+    } else if (user_config.tb_fast) {
+        multiplier = 32;
+    } else {
+        multiplier = 8;
+    }
+    if (record->type & TB_MOVED) {
+        if (user_config.tb_scroll) {
+            report_mouse_t currentReport = pointing_device_get_report();
+            currentReport.h += record->x;
+            currentReport.v -= record->y;
+            pointing_device_set_report(currentReport);
+            record->type &= ~TB_MOVED;
+        } else {
+            record->x *= multiplier;
+            record->y *= multiplier;
+        }
+    }
+}
 #endif

@@ -3,11 +3,13 @@
 
 #include <stdio.h>
 #include "wrappers.h"
+#include "pointing_device.h"
 
 /* Define layer names */
 enum userspace_layers {
     CMT = 0,
     CMK,
+    MSE,
     NAVMT,
     FUNMT,
     NUMMT,
@@ -17,6 +19,9 @@ enum userspace_layers {
 typedef union {
     struct {
         bool osIsLinux;
+        bool tb_scroll;
+        bool tb_slow;
+        bool tb_fast;
     };
 } user_config_t;
 
@@ -30,6 +35,9 @@ enum custom_keycodes {
     PRINT,
     LOCK,
     KC_OS,
+    M_SCRL,
+    M_FAST,
+    M_SLOW,
 };
 
 #define KC_EUR ALGR(KC_5)
@@ -59,6 +67,7 @@ enum custom_keycodes {
 #define FUN_ENT LT(FUNMT, KC_ENT)
 #define NUM_SPC LT(NUMMT, KC_SPC)
 #define SYM_BSP LT(SYMMT, KC_BSPC)
+#define MSE_ESC LT(MSE, KC_ESC)
 #define MK_A LGUI_T(KC_A)
 #define MK_R LALT_T(KC_R)
 #define MK_S LCTL_T(KC_S)
