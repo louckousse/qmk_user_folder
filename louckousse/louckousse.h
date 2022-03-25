@@ -9,19 +9,16 @@
 enum userspace_layers {
     CMT = 0,
     CMK,
-    MSE,
     NAVMT,
     FUNMT,
     NUMMT,
-    SYMMT
+    SYMMT,
+    MSE
 };
 
 typedef union {
     struct {
         bool osIsLinux;
-        bool tb_scroll;
-        bool tb_slow;
-        bool tb_fast;
     };
 } user_config_t;
 
@@ -35,9 +32,7 @@ enum custom_keycodes {
     PRINT,
     LOCK,
     KC_OS,
-    M_SCRL,
-    M_FAST,
-    M_SLOW,
+    M_SFT2
 };
 
 #define KC_EUR ALGR(KC_5)

@@ -51,15 +51,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-        case M_SCRL:
-            user_config.tb_scroll = record->event.pressed;
-            return false;
-        case M_FAST:
-            user_config.tb_fast = record->event.pressed;
-            return false;
-        case M_SLOW:
-            user_config.tb_slow = record->event.pressed;
-            return false;
         case KC_OS:
             if(record->event.pressed) {
                 user_config.osIsLinux = !user_config.osIsLinux;
@@ -71,6 +62,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 rgblight_sethsv(169, 215, 100);
             }
             #endif
+            break;
+        case M_SFT2:
+            if (record->event.pressed) {
+                tap_code16(S(KC_BTN3));
+            }
             break;
     }
     return true;
@@ -98,26 +94,27 @@ combo_t key_combos[COMBO_COUNT] = {
 #ifdef PKRGB
 #ifdef RGBLIGHT_LAYERS
 const rgblight_segment_t PROGMEM NAVMT_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {18, 3, HSV_RED}       // Light 4 LEDs, starting with LED 6
+    {18, 3, HSV_RED}
 );
-// Light LEDs 9 & 10 in cyan when keyboard layer 1 is active
 const rgblight_segment_t PROGMEM FUNMT_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {18, 3, HSV_CYAN}
 );
-// Light LEDs 11 & 12 in purple when keyboard layer 2 is active
 const rgblight_segment_t PROGMEM NUMMT_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {18, 3, HSV_PURPLE}
 );
-// Light LEDs 13 & 14 in green when keyboard layer 3 is active
 const rgblight_segment_t PROGMEM SYMMT_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {18, 3, HSV_GREEN}
+);
+const rgblight_segment_t PROGMEM MSE_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {18, 3, HSV_PINK}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     NAVMT_layer,
-    FUNMT_layer,    // Overrides caps lock layer
-    NUMMT_layer,    // Overrides other layers
-    SYMMT_layer     // Overrides other layers
+    FUNMT_layer,
+    NUMMT_layer,
+    SYMMT_layer,
+    MSE_layer
 );
 #endif
 #endif
@@ -151,6 +148,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(1, layer_state_cmp(state, FUNMT));
     rgblight_set_layer_state(2, layer_state_cmp(state, NUMMT));
     rgblight_set_layer_state(3, layer_state_cmp(state, SYMMT));
+    rgblight_set_layer_state(4, layer_state_cmp(state, MSE));
     return state;
 }
 #endif
@@ -158,25 +156,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef TRACKBALL_MATRIX_COL
 void process_trackball_user(trackball_record_t *record) {
-    uint8_t multiplier;
-    if (user_config.tb_slow) {
-        multiplier = 1;
-    } else if (user_config.tb_fast) {
-        multiplier = 32;
-    } else {
-        multiplier = 8;
-    }
     if (record->type & TB_MOVED) {
-        if (user_config.tb_scroll) {
-            report_mouse_t currentReport = pointing_device_get_report();
-            currentReport.h += record->x;
-            currentReport.v -= record->y;
-            pointing_device_set_report(currentReport);
-            record->type &= ~TB_MOVED;
-        } else {
-            record->x *= multiplier;
-            record->y *= multiplier;
-        }
+        report_mouse_t currentReport = pointing_device_get_report();
+        currentReport.h += record->x;
+        currentReport.v -= record->y;
+        pointing_device_set_report(currentReport);
+        record->type &= ~TB_MOVED;
     }
 }
 #endif

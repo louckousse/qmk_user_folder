@@ -25,8 +25,8 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define ______________COLEMAK_DH_MT_R3_____________       KC_K,    KC_H,    KC_COMM, MK_DOT,  KC_QUOT
 
 #define ________________MOUSE_KEY_L1_______________       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define ________________MOUSE_KEY_L2_______________       XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX
-#define ________________MOUSE_KEY_L3_______________       XXXXXXX, M_SLOW,  M_SCRL,  M_FAST,  XXXXXXX
+#define ________________MOUSE_KEY_L2_______________       XXXXXXX, KC_BTN1, KC_BTN3, M_SFT2,  XXXXXXX
+#define ________________MOUSE_KEY_L3_______________       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 #define ___________________MOD_L___________________       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______
