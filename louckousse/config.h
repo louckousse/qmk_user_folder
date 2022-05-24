@@ -1,5 +1,1 @@
 #define COMBO_COUNT 4
-
-# ifdef CONWAY_ENABLE
-#define SPLIT_TRANSACTION_IDS_USER CONWAY_SYNC
-# endif
